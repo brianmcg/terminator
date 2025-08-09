@@ -472,6 +472,37 @@ class Terminator(Borg):
                     self.style_providers.append(style_provider)
                     break
 
+        # Load custom user CSS file from the same directory as this file
+        (head, _tail) = os.path.split(__file__)
+        custom_css_path = os.path.join(head, 'terminator.css')
+
+        # Define custom variables that can be used in CSS
+        profiles = self.config.base.profiles
+        current_profile = self.config.profile
+        profile_config = profiles.get(current_profile, profiles.get('default', {}))
+        custom_variables = {
+            'term_bgcolor': profile_config.get('background_color', '#000000'),
+            'term_fgcolor': profile_config.get('foreground_color', '#FFFFFF')
+        }
+        
+        if os.path.isfile(custom_css_path):
+            style_provider = Gtk.CssProvider()
+            style_provider.connect('parsing-error', self.on_css_parsing_error)
+            try:
+                # Read the CSS file and replace variables
+                with open(custom_css_path, 'r') as f:
+                    css_content = f.read()
+                
+                # Replace variables in the CSS content
+                for var_name, var_value in custom_variables.items():
+                    css_content = css_content.replace('@' + var_name, var_value)
+                
+                # Load the processed CSS
+                style_provider.load_from_data(css_content.encode('utf-8'))
+                self.style_providers.append(style_provider)
+            except (GError, IOError) as e:
+                err('Error loading custom CSS from %s: %s' % (custom_css_path, e))
+
         # Size the GtkPaned splitter handle size.
         css = ""
         if self.config['handle_size'] in range(0, 21):

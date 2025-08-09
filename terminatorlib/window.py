@@ -74,6 +74,9 @@ class Window(Container, Gtk.Window):
 
         self.get_style_context().add_class("terminator-terminal-window")
 
+        headerbar = self.create_headerbar()
+        self.set_titlebar(headerbar)
+
 #        self.set_property('allow-shrink', True)  # FIXME FOR GTK3, or do we need this actually?
         icon_to_apply=''
 
@@ -82,7 +85,7 @@ class Window(Container, Gtk.Window):
 
         self.title = WindowTitle(self)
         self.title.update()
-        
+
         self.preventHide = False
 
         options = self.config.options_get()
@@ -111,6 +114,15 @@ class Window(Container, Gtk.Window):
             return(self.term_zoomed)
         else:
             raise AttributeError('unknown property %s' % prop.name)
+        
+    def create_headerbar(self):
+        headerbar = Gtk.HeaderBar()
+        headerbar.set_show_close_button(True)
+        headerbar.set_title("Terminator")
+        headerbar.set_subtitle(None)
+        headerbar.get_style_context().add_class("terminator-headerbar")
+        headerbar.show_all()
+        return headerbar
 
     def do_set_property(self, prop, value):
         """Handle gobject setting a property"""

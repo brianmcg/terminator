@@ -1,0 +1,258 @@
+.terminator-terminal-window {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.terminator-terminal-window headerbar {
+  background-color: @term_bgcolor;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: @term_fgcolor;
+}
+
+.terminator-terminal-window headerbar button {
+  background-color: transparent;
+  background-image: none;
+  border-image-width: 0;
+  border-image: none;
+  border: none;
+  box-shadow: none;
+  color: alpha(@term_fgcolor, 0.5);
+  outline: none;
+}
+
+.terminator-terminal-window headerbar button:hover {
+  background-color: alpha(@term_fgcolor, 0.25);
+  background-image: none;
+  border-image-width: 0;
+  border-image: none;
+  border: none;
+  box-shadow: none;
+  color: @term_fgcolor;
+  outline: none;
+}
+
+.terminator-terminal-window notebook {
+  border: none;
+  padding: 0;
+}
+
+.terminator-terminal-window paned {
+  background-color: @term_bgcolor;
+}
+
+.terminator-terminal-window notebook header {
+  background-color: @term_bgcolor;
+  border-radius: 0;
+  border: none;
+}
+
+.terminator-terminal-window notebook tabs {
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0.5rem;
+}
+
+.terminator-terminal-window notebook tab {
+  border-radius: 0.5rem;
+  border: none;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  transition: all 250ms ease;
+}
+
+.terminator-terminal-window notebook tab:hover {
+  background-color: alpha(@term_fgcolor, 0.025);
+  border: none;
+  box-shadow: none;
+}
+
+.terminator-terminal-window notebook tab:checked {
+  background-color: alpha(@term_fgcolor, 0.05);
+  border: none;
+  box-shadow: none;
+}
+
+.terminator-terminal-window notebook tab:checked:hover { 
+  background-color: alpha(@term_fgcolor, 0.075);
+ }
+
+.terminator-terminal-window notebook tab label {
+  color: alpha(@term_fgcolor, 0.5);
+}
+
+.terminator-terminal-window notebook tab:checked label {
+  color: @term_fgcolor;
+  font-weight: 700;
+}
+
+.terminator-terminal-window notebook tab button {
+  background-image: none;
+  border-radius: 50%;
+  border: none;
+  color: alpha(@term_fgcolor, 0.5);
+  margin-right: 0.25rem;
+  opacity: 0;
+  transition: all 250ms ease;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  padding: 0;
+}
+
+.terminator-terminal-window notebook tab:hover button {
+  border: none;
+  opacity: 1;
+}
+
+.terminator-terminal-window notebook tab button:hover {
+  background-color: alpha(@term_fgcolor, 0.25);
+  color: @term_fgcolor;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+}
+
+.terminator-terminal-window separator {
+  background-color: alpha(@term_fgcolor, 0.25);
+  background-image: none;
+}
+
+.terminator-terminal-window scrolledwindow undershoot.top,
+.terminator-terminal-window scrolledwindow undershoot.bottom,
+.terminator-terminal-window scrolledwindow undershoot.left,
+.terminator-terminal-window scrolledwindow undershoot.right,
+.terminator-terminal-window scrolledwindow overshoot.top,
+.terminator-terminal-window scrolledwindow overshoot.bottom,
+.terminator-terminal-window scrolledwindow overshoot.left,
+.terminator-terminal-window scrolledwindow overshoot.right {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+.terminator-terminal-window scrollbar {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0.5rem;
+  transition: all 250ms;
+}
+
+.terminator-terminal-window scrollbar:hover {
+  background-color: alpha(@term_fgcolor, 0.25);
+  border: none;
+}
+
+.terminator-terminal-window scrollbar slider {
+  background-color: alpha(@term_fgcolor, 0.25);
+  border-radius: 0.5rem;
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0.25rem;
+  transition: all 250ms ease;
+}
+
+.terminator-terminal-window scrollbar:hover slider {
+  background-color: alpha(@term_fgcolor, 0.5);
+  min-width: 0.5rem;
+}
+
+.terminator-terminal-window scrollbar slider:active {
+  background-color: @term_fgcolor;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar {
+  background-color: @term_bgcolor;
+  padding: 0.5rem;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar label {
+  color: alpha(@term_fgcolor, 0.75);
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar entry {
+  background-color: alpha(@term_fgcolor, 0.05);
+  border-radius: 0.5rem;
+  border: none;
+  color: @term_fgcolor;
+  transition: all 250ms ease;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar entry:focus {
+  background-color: alpha(@term_fgcolor, 0.1);
+  box-shadow: none;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar button.text-button {
+  background-color: alpha(@term_fgcolor, 0.05);
+  background-image: none;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: none;
+  margin-left: 0.5rem;
+  outline: none;
+  transition: all 250ms ease;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar button.text-button:hover {
+  background-color: alpha(@term_fgcolor, 0.1);
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar button.text-button:disabled {
+  background-color: alpha(@term_fgcolor, 0.025);
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar button.text-button label {
+  color: alpha(@term_fgcolor, 0.75);
+  transition: all 250ms ease;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar button.text-button:hover label {
+  color: @term_fgcolor;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar .text-button:disabled label {
+  color: alpha(@term_fgcolor, 0.25);
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar checkbutton check {
+  background-image: none;
+  background: none;
+  border-radius: 50%;
+  border: none;
+  color: alpha(@term_fgcolor, 0.5);
+  margin: 0;
+  padding: 0;
+  transition: all 250ms ease;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button {
+  background-color: alpha(@term_fgcolor, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  margin-left: 0.5rem;
+  min-width: 24px;
+  transition: all 250ms ease;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:hover {
+  background-color: alpha(@term_fgcolor, 0.1);
+  background-image: none;
+  border: 1px solid transparent;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:active {
+   background-color: transparent; 
+}

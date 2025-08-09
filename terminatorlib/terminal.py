@@ -285,14 +285,21 @@ class Terminal(Gtk.VBox):
             del(self.vte)
 
     def create_terminalbox(self):
-        """Create a GtkHBox containing the terminal and a scrollbar"""
-
-        terminalbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 0)
-        self.scrollbar = Gtk.Scrollbar.new(Gtk.Orientation.VERTICAL, adjustment=self.vte.get_vadjustment())
-        self.scrollbar.set_no_show_all(True)
-
-        terminalbox.pack_start(self.vte, True, True, 0)
-        terminalbox.pack_start(self.scrollbar, False, True, 0)
+        # Create a ScrolledWindow with overlay scrolling
+        terminalbox = Gtk.ScrolledWindow()
+        terminalbox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        terminalbox.set_overlay_scrolling(True)
+        
+        # Configure the ScrolledWindow to properly handle size requests
+        terminalbox.set_propagate_natural_width(True)
+        terminalbox.set_propagate_natural_height(True)
+        
+        # Add the VTE terminal to the scrolled window
+        terminalbox.add(self.vte)
+        
+        # Keep reference to the scrollbar for compatibility with existing code
+        self.scrollbar = terminalbox.get_vscrollbar()
+        
         terminalbox.show_all()
 
         return(terminalbox)
@@ -870,14 +877,18 @@ class Terminal(Gtk.VBox):
         self.vte.set_scroll_on_keystroke(self.config['scroll_on_keystroke'])
         self.vte.set_scroll_on_output(self.config['scroll_on_output'])
 
+        # Handle scrollbar visibility with ScrolledWindow
         if self.config['scrollbar_position'] in ['disabled', 'hidden']:
-            self.scrollbar.hide()
+            self.terminalbox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER)
         else:
-            self.scrollbar.show()
+            self.terminalbox.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+            # For overlay scrolling, position doesn't matter as much, but we can control overlay behavior
             if self.config['scrollbar_position'] == 'left':
-                self.terminalbox.reorder_child(self.scrollbar, 0)
+                # ScrolledWindow doesn't support left scrollbars easily, but overlay scrolling makes this less important
+                pass
             elif self.config['scrollbar_position'] == 'right':
-                self.terminalbox.reorder_child(self.vte, 0)
+                # This is the default for overlay scrolling
+                pass
 
         self.titlebar.update()
         self.vte.queue_draw()
@@ -1102,7 +1113,12 @@ class Terminal(Gtk.VBox):
 
     def do_scrollbar_toggle(self):
         """Show or hide the terminal scrollbar"""
-        self.toggle_widget_visibility(self.scrollbar)
+        # Toggle between automatic and never for the vertical scrollbar policy
+        h_policy, v_policy = self.terminalbox.get_policy()
+        if v_policy == Gtk.PolicyType.NEVER:
+            self.terminalbox.set_policy(h_policy, Gtk.PolicyType.AUTOMATIC)
+        else:
+            self.terminalbox.set_policy(h_policy, Gtk.PolicyType.NEVER)
 
     def toggle_widget_visibility(self, widget):
         """Show or hide a widget"""

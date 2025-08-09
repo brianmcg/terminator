@@ -52,15 +52,10 @@ class Searchbar(Gtk.HBox):
         # Search text
         self.entry = Gtk.Entry()
         self.entry.set_activates_default(True)
+        self.entry.set_placeholder_text(_('Search...'))
         self.entry.show()
         self.entry.connect('activate', self.do_search)
         self.entry.connect('key-press-event', self.search_keypress)
-
-        # Label
-        label = Gtk.Label(label=_('Search:'))
-        label.show()
-        label.set_margin_start(10)
-        label.set_margin_end(5)
 
         # Close Button
         close = Gtk.Button()
@@ -108,7 +103,6 @@ class Searchbar(Gtk.HBox):
         self.invert_search.set_active(self.search_is_inverted)
         self.invert_search.connect('toggled', self.wrap_invert_search)
 
-        self.pack_start(label, False, True, 0)
         self.pack_start(self.entry, True, True, 0)
         self.pack_start(self.prev, False, False, 0)
         self.pack_start(self.next, False, False, 0)
