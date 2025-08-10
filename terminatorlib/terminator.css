@@ -19,6 +19,7 @@
 
 .terminator-terminal-window headerbar button {
   background-color: transparent;
+  border-radius: 50%;
   background-image: none;
   border-image-width: 0;
   border-image: none;
