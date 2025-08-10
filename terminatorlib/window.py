@@ -121,8 +121,23 @@ class Window(Container, Gtk.Window):
         headerbar.set_title("Terminator")
         headerbar.set_subtitle(None)
         headerbar.get_style_context().add_class("terminator-headerbar")
+        
+        # Create new tab button
+        new_tab_button = Gtk.Button()
+        new_tab_button.set_image(Gtk.Image.new_from_icon_name("tab-new-symbolic", Gtk.IconSize.BUTTON))
+        new_tab_button.set_tooltip_text("New Tab")
+        new_tab_button.get_style_context().add_class("suggested-action")
+        new_tab_button.connect("clicked", self.on_new_tab_button_clicked)
+        
+        # Add button to the start (left side) of the headerbar
+        headerbar.pack_start(new_tab_button)
+        
         headerbar.show_all()
         return headerbar
+
+    def on_new_tab_button_clicked(self, button):
+        """Handle new tab button click"""
+        self.tab_new()
 
     def do_set_property(self, prop, value):
         """Handle gobject setting a property"""
