@@ -129,8 +129,22 @@ class Window(Container, Gtk.Window):
         new_tab_button.get_style_context().add_class("suggested-action")
         new_tab_button.connect("clicked", self.on_new_tab_button_clicked)
         
-        # Add button to the start (left side) of the headerbar
+        # Create horizontal split button
+        split_horiz_button = Gtk.Button()
+        split_horiz_button.set_image(Gtk.Image.new_from_icon_name("view-paged-symbolic", Gtk.IconSize.BUTTON))
+        split_horiz_button.set_tooltip_text("Split Horizontally")
+        split_horiz_button.connect("clicked", self.on_split_horiz_button_clicked)
+        
+        # Create vertical split button
+        split_vert_button = Gtk.Button()
+        split_vert_button.set_image(Gtk.Image.new_from_icon_name("view-dual-symbolic", Gtk.IconSize.BUTTON))
+        split_vert_button.set_tooltip_text("Split Vertically")
+        split_vert_button.connect("clicked", self.on_split_vert_button_clicked)
+        
+        # Add buttons to the start (left side) of the headerbar
         headerbar.pack_start(new_tab_button)
+        headerbar.pack_start(split_horiz_button)
+        headerbar.pack_start(split_vert_button)
         
         headerbar.show_all()
         return headerbar
@@ -138,6 +152,34 @@ class Window(Container, Gtk.Window):
     def on_new_tab_button_clicked(self, button):
         """Handle new tab button click"""
         self.tab_new()
+
+    def on_split_horiz_button_clicked(self, button):
+        """Handle horizontal split button click"""
+        # Use the terminator's last focused terminal, which is more reliable
+        focused_terminal = self.terminator.last_focused_term
+        if not focused_terminal:
+            # If no terminal is tracked, get the first visible terminal
+            terminals = self.get_visible_terminals()
+            if terminals:
+                focused_terminal = list(terminals.keys())[0]
+        
+        if focused_terminal:
+            # Call the same method that keyboard shortcuts use
+            focused_terminal.key_split_horiz()
+
+    def on_split_vert_button_clicked(self, button):
+        """Handle vertical split button click"""
+        # Use the terminator's last focused terminal, which is more reliable
+        focused_terminal = self.terminator.last_focused_term
+        if not focused_terminal:
+            # If no terminal is tracked, get the first visible terminal
+            terminals = self.get_visible_terminals()
+            if terminals:
+                focused_terminal = list(terminals.keys())[0]
+        
+        if focused_terminal:
+            # Call the same method that keyboard shortcuts use
+            focused_terminal.key_split_vert()
 
     def do_set_property(self, prop, value):
         """Handle gobject setting a property"""
