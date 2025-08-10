@@ -5,6 +5,10 @@
   box-shadow: none;
 }
 
+.terminator-terminal-window image {
+  -gtk-icon-shadow: none;
+}
+
 .terminator-terminal-window headerbar {
   background-color: @term_bgcolor;
   background-image: none;
@@ -33,6 +37,7 @@
   box-shadow: none;
   color: @term_fgcolor;
   outline: none;
+
 }
 
 .terminator-terminal-window notebook {
@@ -113,9 +118,11 @@
 
 .terminator-terminal-window notebook tab button:hover {
   background-color: alpha(@term_fgcolor, 0.25);
-  color: @term_fgcolor;
+  background-image: none;
   border-radius: 50%;
   border: none;
+  box-shadow: none;
+  color: @term_fgcolor;
   padding: 0;
 }
 
@@ -227,32 +234,43 @@
   color: alpha(@term_fgcolor, 0.25);
 }
 
-.terminator-terminal-window .terminator-terminal-searchbar checkbutton check {
-  background-image: none;
-  background: none;
-  border-radius: 50%;
+.terminator-terminal-window .terminator-terminal-searchbar checkbutton {
+  outline: none;
+  box-shadow: none;
   border: none;
-  color: alpha(@term_fgcolor, 0.5);
-  margin: 0;
-  padding: 0;
-  transition: all 250ms ease;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar checkbutton:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button {
   background-color: alpha(@term_fgcolor, 0.05);
-  border-radius: 0.5rem;
-  border: 1px solid transparent;
+  border-radius: 50%;
+  border: none;
   margin-left: 0.5rem;
-  min-width: 24px;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 6px;
   transition: all 250ms ease;
+  box-shadow: inset 0 0 0 6px @term_bgcolor;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:hover {
   background-color: alpha(@term_fgcolor, 0.1);
   background-image: none;
-  border: 1px solid transparent;
+  border: none;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:active {
    background-color: transparent; 
 }
+
+.terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button image {
+  min-width: 16px;
+  min-height: 16px;
+  -gtk-icon-shadow: none;
+}
+
