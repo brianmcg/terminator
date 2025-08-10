@@ -202,6 +202,10 @@
   color: alpha(@term_fgcolor, 0.4);
 }
 
+.terminator-terminal-window .terminator-terminal-searchbar entry image {
+  color: @term_fgcolor;
+}
+
 .terminator-terminal-window .terminator-terminal-searchbar entry:focus {
   background-color: alpha(@term_fgcolor, 0.1);
   box-shadow: none;

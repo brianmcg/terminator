@@ -53,6 +53,7 @@ class Searchbar(Gtk.HBox):
         self.entry = Gtk.Entry()
         self.entry.set_activates_default(True)
         self.entry.set_placeholder_text(_('Search...'))
+        self.entry.set_icon_from_icon_name(Gtk.EntryIconPosition.PRIMARY, "edit-find-symbolic")
         self.entry.show()
         self.entry.connect('activate', self.do_search)
         self.entry.connect('key-press-event', self.search_keypress)
