@@ -52,7 +52,7 @@ class Searchbar(Gtk.HBox):
         # Search text
         self.entry = Gtk.Entry()
         self.entry.set_activates_default(True)
-        self.entry.set_placeholder_text(_('Search...'))
+        self.entry.set_placeholder_text(_('Find...'))
         self.entry.set_icon_from_icon_name(Gtk.EntryIconPosition.PRIMARY, "edit-find-symbolic")
         
         self.entry.show()
@@ -98,7 +98,7 @@ class Searchbar(Gtk.HBox):
         self.prev.connect('clicked', self.prev_search)
 
         # Match Case checkbox
-        self.match_case = Gtk.CheckButton.new_with_label('Match Case')
+        self.match_case = Gtk.CheckButton.new_with_label('Case')
         self.match_case.show()
         self.match_case.set_sensitive(True)
         self.match_case.set_active(self.config.base.get_item('case_sensitive'))
