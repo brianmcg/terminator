@@ -131,13 +131,13 @@ class Window(Container, Gtk.Window):
         
         # Create horizontal split button
         split_horiz_button = Gtk.Button()
-        split_horiz_button.set_image(Gtk.Image.new_from_icon_name("view-paged-symbolic", Gtk.IconSize.BUTTON))
+        split_horiz_button.set_image(Gtk.Image.new_from_icon_name("terminator_horiz", Gtk.IconSize.BUTTON))
         split_horiz_button.set_tooltip_text("Split Horizontally")
         split_horiz_button.connect("clicked", self.on_split_horiz_button_clicked)
         
         # Create vertical split button
         split_vert_button = Gtk.Button()
-        split_vert_button.set_image(Gtk.Image.new_from_icon_name("view-dual-symbolic", Gtk.IconSize.BUTTON))
+        split_vert_button.set_image(Gtk.Image.new_from_icon_name("terminator_vert", Gtk.IconSize.BUTTON))
         split_vert_button.set_tooltip_text("Split Vertically")
         split_vert_button.connect("clicked", self.on_split_vert_button_clicked)
         
