@@ -1,3 +1,5 @@
+@define-color placeholder_text_color @term_fgcolor;
+
 .terminator-terminal-window {
   background-color: transparent;
   padding: 0;
@@ -199,10 +201,6 @@
   transition: all 250ms ease;
 }
 
-.terminator-terminal-window .terminator-terminal-searchbar entry placeholder {
-  color: alpha(@term_fgcolor, 0.4);
-}
-
 .terminator-terminal-window .terminator-terminal-searchbar entry image {
   color: @term_fgcolor;
 }
@@ -303,13 +301,14 @@
   min-height: 28px;
   padding: 6px;
   transition: all 250ms ease;
-  box-shadow: inset 0 0 0 6px @term_bgcolor;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:hover {
   background-color: alpha(@term_fgcolor, 0.1);
   background-image: none;
   border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:active {
