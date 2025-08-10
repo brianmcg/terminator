@@ -189,7 +189,7 @@ class Terminal(Gtk.VBox):
             self.pack_start(self.titlebar, False, True, 0)
             self.pack_start(self.terminalbox, True, True, 0)
 
-        self.pack_end(self.searchbar, True, True, 0)
+        self.pack_end(self.searchbar, False, False, 0)
 
         self.connect_signals()
 
