@@ -194,7 +194,12 @@
   border-radius: 0.5rem;
   border: none;
   color: @term_fgcolor;
+  caret-color: @term_fgcolor;
   transition: all 250ms ease;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar entry placeholder {
+  color: alpha(@term_fgcolor, 0.4);
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar entry:focus {
@@ -213,25 +218,32 @@
   transition: all 250ms ease;
 }
 
-.terminator-terminal-window .terminator-terminal-searchbar button.text-button:hover {
-  background-color: alpha(@term_fgcolor, 0.1);
-}
-
-.terminator-terminal-window .terminator-terminal-searchbar button.text-button:disabled {
-  background-color: alpha(@term_fgcolor, 0.025);
-}
-
-.terminator-terminal-window .terminator-terminal-searchbar button.text-button label {
-  color: alpha(@term_fgcolor, 0.75);
-  transition: all 250ms ease;
-}
-
-.terminator-terminal-window .terminator-terminal-searchbar button.text-button:hover label {
+.terminator-terminal-window .terminator-terminal-searchbar .terminator-search-button {
+  background-color: alpha(@term_fgcolor, 0.075);
+  opacity: 0.5;
+  border-radius: 0.5rem;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
   color: @term_fgcolor;
+  min-width: 28px;
+  min-height: 28px;
+  padding: 6px;
+  transition: all 250ms ease;
+  margin-left: 0.5rem;
 }
 
-.terminator-terminal-window .terminator-terminal-searchbar .text-button:disabled label {
-  color: alpha(@term_fgcolor, 0.25);
+.terminator-terminal-window .terminator-terminal-searchbar .terminator-search-button:disabled {
+  opacity: 0.25;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar .terminator-search-button:hover {
+  opacity: 0.75;
+}
+
+.terminator-terminal-window .terminator-terminal-searchbar .terminator-search-button image {
+  color: @term_fgcolor;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar checkbutton {
@@ -302,6 +314,10 @@
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button image {
   min-width: 16px;
   min-height: 16px;
+  color: alpha(@term_fgcolor, 0.5);
   -gtk-icon-shadow: none;
 }
 
+.terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:hover image {
+  color: @term_fgcolor;
+}

@@ -62,7 +62,7 @@ class Searchbar(Gtk.HBox):
         close.set_relief(Gtk.ReliefStyle.NONE)
         close.set_focus_on_click(False)
         icon = Gtk.Image()
-        icon.set_from_stock(Gtk.STOCK_CLOSE, Gtk.IconSize.MENU)
+        icon.set_from_icon_name("window-close-symbolic", Gtk.IconSize.MENU)
         close.add(icon)
         close.set_name('terminator-search-close-button')
         if hasattr(close, 'set_tooltip_text'):
@@ -71,14 +71,22 @@ class Searchbar(Gtk.HBox):
         close.show_all()
 
         # Next Button
-        self.next = Gtk.Button.new_with_label('Next')
-        self.next.show()
+        self.next = Gtk.Button()
+        self.next.get_style_context().add_class("terminator-search-button")
+        next_icon = Gtk.Image()
+        next_icon.set_from_icon_name("go-down-symbolic", Gtk.IconSize.MENU)
+        self.next.add(next_icon)
+        self.next.show_all()
         self.next.set_sensitive(False)
         self.next.connect('clicked', self.next_search)
 
         # Previous Button
-        self.prev = Gtk.Button.new_with_label('Prev')
-        self.prev.show()
+        self.prev = Gtk.Button()
+        self.prev.get_style_context().add_class("terminator-search-button")
+        prev_icon = Gtk.Image()
+        prev_icon.set_from_icon_name("go-up-symbolic", Gtk.IconSize.MENU)
+        self.prev.add(prev_icon)
+        self.prev.show_all()
         self.prev.set_sensitive(False)
         self.prev.connect('clicked', self.prev_search)
 
@@ -97,7 +105,7 @@ class Searchbar(Gtk.HBox):
         self.wrap.connect('toggled', self.wrap_toggled)
 
         # Invert Search checkbox
-        self.invert_search = Gtk.CheckButton.new_with_label('Invert Search')
+        self.invert_search = Gtk.CheckButton.new_with_label('Invert')
         self.invert_search.show()
         self.search_is_inverted = self.config.base.get_item('invert_search')
         self.invert_search.set_active(self.search_is_inverted)
