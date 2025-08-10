@@ -293,24 +293,22 @@
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button {
-  /* background-color: alpha(@term_fgcolor, 0.05); */
+  background-color: transparent;
   border-radius: 50%;
   border: none;
-  padding: 0;
-  margin: 0;
-  /* margin-left: 0.5rem; */
+  padding: 0.25rem;
+  min-width: 24px;
+  min-height: 24px;
+  margin-left: 0.5rem;
   transition: all 250ms ease;
-  background-color: red;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:hover {
-  /* background-color: alpha(@term_fgcolor, 0.1); */
+  background-color: alpha(@term_fgcolor, 0.25);
   background-image: none;
   border: none;
   outline: none;
   box-shadow: none;
-  padding: 0;
-  margin: 0;
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button:active {
@@ -318,7 +316,6 @@
 }
 
 .terminator-terminal-window .terminator-terminal-searchbar #terminator-search-close-button image {
-  background-color: blue;
   color: alpha(@term_fgcolor, 0.5);
   padding: 0;
   margin: 0;
