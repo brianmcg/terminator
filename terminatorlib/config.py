@@ -232,7 +232,7 @@ DEFAULTS = {
                 'colorterm'             : 'truecolor',
                 'font'                  : 'Mono 10',
                 'foreground_color'      : '#aaaaaa',
-                'show_titlebar'         : True,
+                'show_titlebar'         : False,
                 'scrollbar_position'    : "right",
                 'scroll_on_keystroke'   : True,
                 'scroll_on_output'      : False,
