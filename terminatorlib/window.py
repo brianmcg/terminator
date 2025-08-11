@@ -131,14 +131,14 @@ class Window(Container, Gtk.Window):
         
         # Create horizontal split button
         split_horiz_button = Gtk.Button()
-        split_horiz_button.set_image(Gtk.Image.new_from_icon_name("terminator_termbox_horiz-symbolic", Gtk.IconSize.BUTTON))
+        split_horiz_button.set_image(Gtk.Image.new_from_icon_name("termbox_horiz-symbolic", Gtk.IconSize.BUTTON))
         split_horiz_button.set_tooltip_text("Split Horizontally")
         split_horiz_button.get_style_context().add_class("termbox-action-button")
         split_horiz_button.connect("clicked", self.on_split_horiz_button_clicked)
         
         # Create vertical split button
         split_vert_button = Gtk.Button()
-        split_vert_button.set_image(Gtk.Image.new_from_icon_name("terminator_termbox_vert-symbolic", Gtk.IconSize.BUTTON))
+        split_vert_button.set_image(Gtk.Image.new_from_icon_name("termbox_vert-symbolic", Gtk.IconSize.BUTTON))
         split_vert_button.set_tooltip_text("Split Vertically")
         split_vert_button.get_style_context().add_class("termbox-action-button")
         split_vert_button.connect("clicked", self.on_split_vert_button_clicked)
